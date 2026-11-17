@@ -1,0 +1,40 @@
+# Copie para config.toml e ajuste. (config.toml está no .gitignore)
+
+[busca]
+janela_dias = 30        # olha os próximos 30 dias
+pausa_segundos = 2.0    # espera entre consultas (seja gentil com o site)
+db_path = "radar.db"
+
+[[rota]]
+origem = "Niterói"
+destino = "Cabo Frio"
+dias = ["quinta"]       # pode ter mais de um: ["quinta", "domingo"]
+preco_max = 30.0
+# Os "ids" são o trecho final do endereço da Buser:
+# https://www.buser.com.br/onibus/niteroi-rj/cabo-frio-rj
+origem_id = "niteroi-rj"
+destino_id = "cabo-frio-rj"
+# dias_site = "todos"          # dias que o SITE mostra (padrão: todos); os avisos usam só "dias"
+# ids de outras fontes (cada plataforma usa os seus identificadores):
+# ids = { clickbus = { origem = "...", destino = "..." } }
+# horario_min = "06:00"        # opcional: padrão do filtro de horário no site e nos avisos
+# horario_max = "22:00"
+
+# Pode adicionar outras rotas repetindo o bloco [[rota]].
+
+[provedor]
+nome = "buser"          # "buser" (site real), "json" (endpoint genérico) ou "mock" (dados de teste)
+                        # várias fontes: nome = ["buser", "json"]. Nomes sem integração (ex.: "clickbus") dão erro explicando.
+
+[provedor.buser]
+# "dia_da_semana": 1 requisição traz as próximas ~12 semanas daquele dia (mais econômico)
+# "por_data":      1 requisição por data, via ?ida=AAAA-MM-DD
+modo = "dia_da_semana"
+
+# Só se você precisar do provedor genérico "json" (veja o README):
+# [provedor.json]
+# url = "..."
+# [provedor.json.mapeamento]
+# lista = "trips"
+# horario = "departure"
+# preco = "price"

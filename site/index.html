@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Busão Barato</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🚌%3C/text%3E%3C/svg%3E">
+<style>
+:root{--bg:#f6f5f1;--card:#fff;--ink:#1b1b18;--mute:#6b6a63;--line:#e4e2da;--brand:#c2185b;--ok:#0b7a43;--okbg:#e3f5ea;--warn:#7a5200;--warnbg:#fff3d6;--bad:#a12622;--badbg:#fde8e7;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141413;--card:#1e1e1c;--ink:#f1efe8;--mute:#a09e94;--line:#34332f;--brand:#f06292;--ok:#5fd394;--okbg:#14301f;--warn:#f0c870;--warnbg:#3a2e12;--bad:#ff8a84;--badbg:#3a1a19}}
+:root[data-theme="dark"]{--bg:#141413;--card:#1e1e1c;--ink:#f1efe8;--mute:#a09e94;--line:#34332f;--brand:#f06292;--ok:#5fd394;--okbg:#14301f;--warn:#f0c870;--warnbg:#3a2e12;--bad:#ff8a84;--badbg:#3a1a19}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:760px;margin:0 auto;padding:20px 16px 48px}
+h1{margin:0;font-size:1.7rem;letter-spacing:-.02em}h1 span{color:var(--brand)}
+.sub{margin:2px 0 16px;color:var(--mute)}
+.upd{display:inline-block;margin-bottom:12px;font-size:.8rem;color:var(--mute);background:var(--card);border:1px solid var(--line);padding:4px 10px;border-radius:99px}.upd.old{color:var(--warn);background:var(--warnbg);border-color:transparent}
+.panel,.day,.kpi{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:12px}
+label,.lb{display:block;font-size:.75rem;font-weight:600;color:var(--mute);text-transform:uppercase;letter-spacing:.04em;margin:0 0 6px}
+select,input[type=time]{width:100%;font:inherit;padding:10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink);min-height:44px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px}.row{margin-top:14px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip,.tab{font:inherit;padding:8px 14px;min-height:40px;border-radius:99px;border:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer}
+.chip[aria-pressed="true"],.tab[aria-selected="true"]{background:var(--brand);border-color:var(--brand);color:#fff}
+.price{display:flex;align-items:center;gap:12px;min-height:44px}.price input{flex:1;accent-color:var(--brand)}.price b{min-width:84px;text-align:right}
+.hrs{display:flex;align-items:center;gap:8px}.hrs span{color:var(--mute)}
+.mini{margin:10px 0 0;font-size:.8rem;color:var(--mute)}
+.link{font:inherit;font-size:.8rem;background:none;border:0;color:var(--brand);text-decoration:underline;cursor:pointer;padding:0}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:12px}
+.kpi{margin:0;padding:12px}.kpi span{display:block;font-size:.72rem;color:var(--mute);font-weight:600;text-transform:uppercase;letter-spacing:.03em}
+.kpi b{display:block;font-size:1.3rem;margin-top:2px;font-variant-numeric:tabular-nums}.kpi small{color:var(--mute);font-size:.75rem}.kpi.na b{color:var(--mute)}
+.tabs{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap}
+.chart{width:100%;height:auto;display:block}.gl{stroke:var(--line)}.gt{fill:var(--mute);font:11px system-ui,sans-serif}
+.gline{fill:none;stroke:var(--brand);stroke-width:2.5;stroke-linejoin:round}.ga{fill:var(--brand);opacity:.08}.gd{fill:var(--brand)}
+.gm{stroke:var(--mute);stroke-dasharray:4 4}.gref{stroke:var(--brand);stroke-dasharray:5 4}.gb{fill:var(--mute);opacity:.4}.gb.ok{fill:var(--ok);opacity:1}
+.sample{position:relative}.sample::after{content:"EXEMPLO ILUSTRATIVO";position:absolute;inset:0;display:grid;place-items:center;font-weight:800;font-size:1.5rem;color:var(--mute);opacity:.3;transform:rotate(-10deg);pointer-events:none}
+.empty{padding:18px 4px;color:var(--mute);text-align:center}.empty b{display:block;color:var(--ink);margin-bottom:4px}
+.prog{display:flex;gap:6px;justify-content:center;margin-top:10px}.prog i{width:28px;height:6px;border-radius:3px;background:var(--line)}.prog i.on{background:var(--brand)}
+.note{padding:12px 14px;border-radius:12px;background:var(--warnbg);color:var(--warn);margin-bottom:12px;font-size:.9rem}
+.sum{margin:16px 2px 10px;font-weight:600}.day h2{margin:0 0 8px;font-size:1rem;text-transform:capitalize}
+.trip{display:grid;grid-template-columns:auto 1fr auto;gap:4px 12px;align-items:center;padding:10px 0;border-top:1px solid var(--line)}.trip:first-of-type{border-top:0}
+.time{font-weight:700;font-variant-numeric:tabular-nums}.meta{color:var(--mute);font-size:.85rem;min-width:0}
+.p{font-weight:700;color:var(--ok);background:var(--okbg);padding:3px 10px;border-radius:8px;font-variant-numeric:tabular-nums;justify-self:end}.p.hi{color:var(--warn);background:var(--warnbg)}
+.act{grid-column:1/-1;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.vd{font-size:.75rem;padding:2px 8px;border-radius:99px;background:var(--line);color:var(--mute)}.vd.barato,.vd.minimo{background:var(--okbg);color:var(--ok)}.vd.caro{background:var(--badbg);color:var(--bad)}
+.buy,.hb{font:inherit;font-size:.9rem;font-weight:600;padding:8px 14px;min-height:40px;border-radius:10px;text-decoration:none;white-space:nowrap;cursor:pointer;display:inline-flex;align-items:center}
+.buy{color:#fff;background:var(--brand);border:1px solid var(--brand);margin-left:auto}.hb{color:var(--ink);background:var(--bg);border:1px solid var(--line)}
+.th{grid-column:1/-1;background:var(--bg);border-radius:10px;padding:10px}
+footer{margin-top:22px;color:var(--mute);font-size:.8rem}
+:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+@media (max-width:560px){.kpis{grid-template-columns:1fr 1fr}.g2{grid-template-columns:1fr}.hrs input{min-width:0}}
+</style>
+</head>
+<body>
+<main>
+  <header><h1>Busão <span>Barato</span></h1><p class="sub">Diga a rota, o dia e quanto quer pagar. A gente mostra só o que cabe no bolso.</p></header>
+  <span id="upd" class="upd" hidden></span>
+  <div id="aviso" class="note" hidden></div>
+  <section class="panel" aria-label="Filtros">
+    <div class="g2"><div><label for="orig">De</label><select id="orig"></select></div><div><label for="dest">Para</label><select id="dest"></select></div></div>
+    <div class="row"><span class="lb">Dia da semana</span><div id="dias" class="chips"></div></div>
+    <div class="g2 row">
+      <div><label for="max">Pagar até</label><div class="price"><input id="max" type="range" min="10" max="120" step="1"><b id="maxv"></b></div></div>
+      <div><span class="lb">Horário de saída</span><div class="hrs"><input id="hmin" type="time" aria-label="Saída a partir de"><span>até</span><input id="hmax" type="time" aria-label="Saída até"></div></div>
+    </div>
+    <p class="mini">Seus filtros ficam salvos só neste navegador. <button id="reset" class="link" type="button">Restaurar padrão</button></p>
+  </section>
+  <section id="kpis" class="kpis" aria-label="Resumo de preços"></section>
+  <section class="panel" aria-label="Gráficos">
+    <div class="tabs" role="tablist"><button class="tab" role="tab" id="t-hoje" data-t="hoje">Hoje, por data</button><button class="tab" role="tab" id="t-evo" data-t="evo">Evolução no tempo</button></div>
+    <div id="graf"></div><p id="grafnota" class="mini"></p>
+  </section>
+  <div id="sum" class="sum"></div>
+  <div id="out"><p class="empty">Carregando passagens…</p></div>
+  <footer id="foot"></footer>
+</main>
+<script id="snap" type="application/json">{"versao":2,"atualizado_em":"","fontes":[],"demo":true,"rotas":[]}</script>
+<script src="radar-core.js"></script>
+<script>
+const C=RadarCore,$=id=>document.getElementById(id),esc=C.esc,brl=C.brl;
+const NOMES=['segunda','terça','quarta','quinta','sexta','sábado','domingo'],ABREV=['seg','ter','qua','qui','sex','sáb','dom'];
+const MES=['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'],KEY='busao3';
+let D,H=null,P={sel:new Set(),max:30,hmin:'',hmax:'',orig:'',dest:''},tab='hoje',abertos=new Set(),exemplo=false;
+
+const pegar=u=>fetch(u,{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject());
+async function carregar(){
+  try{D=await pegar('dados.json')}catch(e){try{D=JSON.parse($('snap').textContent)}catch(e2){D=null}}
+  if(!D||!D.rotas||!D.rotas.length){$('out').innerHTML='<p class="empty"><b>Não consegui carregar as passagens.</b>Tente de novo em instantes.</p>';return}
+  try{H=await pegar('historico.json')}catch(e){H=null}
+  iniciar();
+}
+const rota=()=>D.rotas.find(r=>r.origem===P.orig&&r.destino===P.dest)||D.rotas[0];
+function padrao(r){P.sel=new Set(r.dias);P.max=r.preco_max;P.hmin=r.horario_min||'';P.hmax=r.horario_max||''}
+function salvar(){try{localStorage.setItem(KEY,JSON.stringify({o:P.orig,d:P.dest,s:[...P.sel],m:P.max,a:P.hmin,b:P.hmax}))}catch(e){}}
+function restaurar(){try{const s=JSON.parse(localStorage.getItem(KEY)||'null');if(s&&D.rotas.some(r=>r.origem===s.o&&r.destino===s.d)){P={orig:s.o,dest:s.d,sel:new Set(s.s),max:s.m,hmin:s.a||'',hmax:s.b||''};return true}}catch(e){}return false}
+
+function viagensAtuais(r){
+  const agora=new Date();
+  return r.viagens.map(v=>{const[y,m,d]=v.data.split('-').map(Number),[h,mi]=v.hora.split(':').map(Number);return{...v,dt:new Date(y,m-1,d,h,mi),wd:C.diaSemana(v.data),dia:new Date(y,m-1,d)}}).filter(v=>v.dt>agora).sort((a,b)=>a.dt-b.dt);
+}
+const noHorario=v=>(!P.hmin||v.hora>=P.hmin)&&(!P.hmax||v.hora<=P.hmax);
+
+function iniciar(){
+  $('aviso').hidden=!D.demo;
+  if(D.demo)$('aviso').textContent='Dados de demonstração, lidos da Buser em 13/11/2026 (próximas duas semanas, todos os dias). O histórico real ainda não existe: ele começa quando o robô rodar de verdade.';
+  if(!restaurar()){const r=D.rotas[0];P.orig=r.origem;P.dest=r.destino;padrao(r)}
+  const t=new Date(D.atualizado_em),ok=!isNaN(t);
+  $('upd').hidden=!ok;
+  if(ok){const h=(Date.now()-t)/36e5;$('upd').textContent='Atualizado em '+t.toLocaleString('pt-BR',{timeZone:'America/Sao_Paulo',dateStyle:'short',timeStyle:'short'})+(h>36?' · dados antigos':'');$('upd').classList.toggle('old',h>36)}
+  $('foot').textContent='Fonte: '+((D.fontes&&D.fontes.length?D.fontes:['Buser']).map(f=>f[0].toUpperCase()+f.slice(1)).join(', '))+'. Os preços podem mudar: confira no site antes de comprar. Projeto independente, sem vínculo com as empresas.';
+  render();
+}
+
+function render(){
+  const R=rota(),todas=viagensAtuais(R);
+  // origem/destino
+  const origs=[...new Set(D.rotas.map(r=>r.origem))],dests=D.rotas.filter(r=>r.origem===R.origem).map(r=>r.destino);
+  P.orig=R.origem;P.dest=R.destino;
+  $('orig').innerHTML=origs.map(o=>`<option${o===P.orig?' selected':''}>${esc(o)}</option>`).join('');
+  $('dest').innerHTML=dests.map(d=>`<option${d===P.dest?' selected':''}>${esc(d)}</option>`).join('');
+  // dias disponíveis nos dados
+  const av=[...new Set(todas.map(v=>v.wd))].sort();
+  P.sel=new Set([...P.sel].filter(d=>av.includes(d)));if(!P.sel.size)P.sel=new Set(av);
+  $('dias').innerHTML=av.map(d=>`<button class="chip" type="button" aria-pressed="${P.sel.has(d)}" data-d="${d}">${NOMES[d]}</button>`).join('')+(av.length>1?`<button class="chip" type="button" aria-pressed="${P.sel.size===av.length}" data-d="all">todos</button>`:'');
+  window.__av=av;
+  $('max').value=P.max;$('maxv').textContent=brl(P.max);$('hmin').value=P.hmin;$('hmax').value=P.hmax;
+
+  const f=todas.filter(v=>P.sel.has(v.wd)&&noHorario(v)),cheap=f.filter(v=>v.preco<=P.max);
+  // histórico real (nunca usado com dados de demonstração)
+  const hr=!D.demo&&H&&H.rotas&&H.rotas[R.id]||null;
+  const obs=hr?C.observacoes(C.filtrar(hr,{dias:[...P.sel],horaMin:P.hmin,horaMax:P.hmax})):[];
+  const est=C.estatisticas(obs),base=C.suficiente(est);
+  kpis(f,est,base);graficos(f,obs,est,base,hr,R);
+
+  let h='';
+  if(cheap.length){
+    $('sum').textContent=`${cheap.length} ${cheap.length>1?'passagens':'passagem'} até ${brl(P.max)} · a mais barata: ${brl(Math.min(...cheap.map(v=>v.preco)))}`;
+    h=grupos(cheap,false,obs,hr);
+  }else if(f.length){
+    $('sum').textContent=`Nenhuma passagem até ${brl(P.max)} por enquanto.`;
+    h='<p class="mini" style="margin:0 2px 10px">As mais baratas disponíveis agora:</p>'+grupos([...f].sort((a,b)=>a.preco-b.preco).slice(0,3).sort((a,b)=>a.dt-b.dt),true,obs,hr);
+  }else{
+    $('sum').textContent='';
+    h='<p class="empty"><b>Nenhuma viagem nesses filtros.</b>Escolha mais dias ou amplie o horário de saída.</p>';
+  }
+  $('out').innerHTML=h;
+  $('t-hoje').setAttribute('aria-selected',tab==='hoje');$('t-evo').setAttribute('aria-selected',tab==='evo');
+}
+
+function kpis(f,est,base){
+  const mn=f.length?f.reduce((a,b)=>b.preco<a.preco?b:a):null;
+  const card=(t,v,s,na)=>`<div class="kpi${na?' na':''}"><span>${t}</span><b>${v}</b><small>${s}</small></div>`;
+  $('kpis').innerHTML=card('Menor agora',mn?brl(mn.preco):'—',mn?`${ABREV[mn.wd]}, ${C.ddmm(mn.data)} às ${mn.hora}`:'sem viagens',!mn)
+   +card('Menor registrado',base?brl(est.min):'—',base?'desde '+C.ddmm(est.primeiro):'coletando',!base)
+   +card('Média registrada',base?brl(est.media):'—',base?est.dias+' dias de coleta':'coletando',!base)
+   +card('Maior registrado',base?brl(est.max):'—',base?'até '+C.ddmm(est.ultimo):'coletando',!base);
+}
+
+function graficos(f,obs,est,base,hr,R){
+  let g='',nota='';
+  const w=Math.round($('graf').clientWidth)||640,hh=w<480?200:230,dim={w,h:hh};
+  if(tab==='hoje'){
+    const pts=C.porData(f);
+    g=pts.length?C.svgBarras(pts,{...dim,ref:P.max,aria:`Menor preço por data, ${R.origem} para ${R.destino}`}):'<p class="empty"><b>Sem datas para mostrar.</b>Ajuste os filtros.</p>';
+    nota='Menor preço de cada data, nos dados de hoje. Barras verdes cabem no seu limite. Isto não é histórico: é o retrato atual.';
+  }else if(base){
+    const s=C.serieDiaria(obs);
+    g=C.svgLinha(s.map(d=>({x:d.dia,y:d.min})),{...dim,media:est.media,aria:'Menor preço registrado por dia de coleta'});
+    nota=`Menor preço à venda em cada dia de coleta (${est.dias} dias, desde ${C.ddmm(est.primeiro)}). A linha tracejada é a média de tudo que foi registrado.`;
+  }else{
+    const dias=est?est.dias:0,tem=(hr&&hr.coletas?hr.coletas.length:0)||dias;
+    const ex=exemplo&&D.demo;
+    g=ex?`<div class="sample">${C.svgLinha(C.exemplo(),{...dim,aria:'Exemplo ilustrativo, sem preços reais'})}</div>`
+      :`<div class="empty"><b>${D.demo?'Ainda não há histórico real':'Coletando histórico'}</b>${D.demo?'O robô registra os preços uma vez por dia, a partir da primeira execução.':`Já temos ${tem} ${tem===1?'dia':'dias'} de coleta; são necessários ${C.MIN_DIAS} para mostrar a evolução.`}<div class="prog">${Array.from({length:C.MIN_DIAS},(_,i)=>`<i class="${i<tem?'on':''}"></i>`).join('')}</div>${D.demo?'<p><button class="link" id="ex" type="button">Ver exemplo ilustrativo do gráfico</button></p>':''}</div>`;
+    nota=ex?'EXEMPLO ILUSTRATIVO: valores inventados só para mostrar o visual. Não são preços reais.':'O histórico só existe a partir da primeira coleta: não dá para reconstruir preços do passado.';
+  }
+  $('graf').innerHTML=g;$('grafnota').textContent=nota;
+}
+
+function grupos(list,hi,obs,hr){
+  const g={};list.forEach(v=>(g[v.data]=g[v.data]||[]).push(v));
+  return Object.keys(g).map(k=>{const d=g[k][0].dia;return`<section class="day"><h2>${ABREV[g[k][0].wd]}, ${d.getDate()} ${MES[d.getMonth()]}</h2>`+g[k].map(v=>linha(v,hi,obs,hr)).join('')+'</section>'}).join('');
+}
+function linha(v,hi,obs,hr){
+  const key=C.chaveViagem(v),vd=C.veredito(v.preco,obs),aberto=abertos.has(key);
+  const temHist=hr&&hr.viagens&&hr.viagens[key]?C.expandir(hr.viagens[key]):[];
+  let th='';
+  if(aberto){
+    th='<div class="th">'+(temHist.length>1?C.svgLinha(temHist.map(o=>({x:o.dia,y:o.preco})),{w:Math.max(260,Math.round($('out').clientWidth)-64),h:150,aria:'Evolução do preço desta viagem'})+`<p class="mini">Preço desta viagem desde ${C.ddmm(temHist[0].dia)}${new Set(temHist.map(o=>o.preco)).size===1?': não mudou.':'.'}</p>`:`<p class="mini" style="margin:0">${D.demo?'Sem histórico em dados de demonstração.':temHist.length?'Esta viagem só foi vista em um dia; o gráfico aparece quando houver mais coletas.':'Ainda não há histórico desta viagem.'}</p>`)+'</div>';
+  }
+  return`<div class="trip"><span class="time">${v.hora}</span><span class="meta">${esc(v.empresa)}${v.vagas?` · ${v.vagas} ${v.vagas>1?'vagas':'vaga'}`:''}</span><span class="p${hi?' hi':''}">${brl(v.preco)}</span><div class="act">${vd.nivel!=='sem-base'?`<span class="vd ${vd.nivel}">${esc(vd.texto)}</span>`:''}<button class="hb" type="button" data-k="${esc(key)}" aria-expanded="${aberto}">Histórico</button><a class="buy" href="${esc(v.link)}" target="_blank" rel="noopener">Comprar</a></div>${th}</div>`;
+}
+
+$('orig').onchange=e=>{const r=D.rotas.find(x=>x.origem===e.target.value);P.orig=r.origem;P.dest=r.destino;padrao(r);salvar();render()};
+$('dest').onchange=e=>{const r=D.rotas.find(x=>x.origem===P.orig&&x.destino===e.target.value);if(r){P.dest=r.destino;padrao(r);salvar();render()}};
+$('max').oninput=e=>{P.max=+e.target.value;salvar();render()};
+$('hmin').onchange=e=>{P.hmin=e.target.value;salvar();render()};
+$('hmax').onchange=e=>{P.hmax=e.target.value;salvar();render()};
+$('reset').onclick=()=>{padrao(rota());salvar();render()};
+$('dias').onclick=e=>{const b=e.target.closest('[data-d]');if(!b)return;if(b.dataset.d==='all')P.sel=new Set(window.__av);else{const d=+b.dataset.d;P.sel.has(d)?P.sel.delete(d):P.sel.add(d);if(!P.sel.size)P.sel.add(d)}salvar();render()};
+document.querySelector('.tabs').onclick=e=>{const b=e.target.closest('[data-t]');if(b){tab=b.dataset.t;render()}};
+$('graf').onclick=e=>{if(e.target.id==='ex'){exemplo=true;render()}};
+$('out').onclick=e=>{const b=e.target.closest('[data-k]');if(!b)return;abertos.has(b.dataset.k)?abertos.delete(b.dataset.k):abertos.add(b.dataset.k);render()};
+carregar();
+</script>
+</body>
+</html>
