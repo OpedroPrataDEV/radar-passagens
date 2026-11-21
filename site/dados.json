@@ -1,6 +1,6 @@
 {
  "versao": 2,
- "atualizado_em": "2026-11-21T00:16:04+00:00",
+ "atualizado_em": "2026-11-21T17:55:21+00:00",
  "fontes": [
   "buser"
  ],
@@ -20,26 +20,8 @@
     {
      "fonte": "buser",
      "data": "2026-11-21",
-     "hora": "07:20",
-     "preco": 45.9,
-     "vagas": 7,
-     "empresa": "Buser",
-     "link": "https://www.buser.com.br/onibus/niteroi-rj/cabo-frio-rj?ida=2026-11-21"
-    },
-    {
-     "fonte": "buser",
-     "data": "2026-11-21",
-     "hora": "10:20",
-     "preco": 45.9,
-     "vagas": 6,
-     "empresa": "Buser",
-     "link": "https://www.buser.com.br/onibus/niteroi-rj/cabo-frio-rj?ida=2026-11-21"
-    },
-    {
-     "fonte": "buser",
-     "data": "2026-11-21",
      "hora": "19:20",
-     "preco": 50.9,
+     "preco": 45.9,
      "vagas": null,
      "empresa": "Buser",
      "link": "https://www.buser.com.br/onibus/niteroi-rj/cabo-frio-rj?ida=2026-11-21"
@@ -66,7 +48,7 @@
      "fonte": "buser",
      "data": "2026-11-22",
      "hora": "20:00",
-     "preco": 56.9,
+     "preco": 57.9,
      "vagas": null,
      "empresa": "Buser",
      "link": "https://www.buser.com.br/onibus/niteroi-rj/cabo-frio-rj?ida=2026-11-22"
@@ -75,7 +57,7 @@
      "fonte": "buser",
      "data": "2026-11-23",
      "hora": "07:20",
-     "preco": 51.9,
+     "preco": 57.9,
      "vagas": null,
      "empresa": "Buser",
      "link": "https://www.buser.com.br/onibus/niteroi-rj/cabo-frio-rj?ida=2026-11-23"
@@ -84,7 +66,7 @@
      "fonte": "buser",
      "data": "2026-11-23",
      "hora": "10:20",
-     "preco": 51.9,
+     "preco": 57.9,
      "vagas": null,
      "empresa": "Buser",
      "link": "https://www.buser.com.br/onibus/niteroi-rj/cabo-frio-rj?ida=2026-11-23"
@@ -93,7 +75,7 @@
      "fonte": "buser",
      "data": "2026-11-23",
      "hora": "19:20",
-     "preco": 40.9,
+     "preco": 39.9,
      "vagas": null,
      "empresa": "Buser",
      "link": "https://www.buser.com.br/onibus/niteroi-rj/cabo-frio-rj?ida=2026-11-23"
@@ -111,7 +93,7 @@
      "fonte": "buser",
      "data": "2026-11-24",
      "hora": "07:20",
-     "preco": 39.9,
+     "preco": 43.9,
      "vagas": null,
      "empresa": "Buser",
      "link": "https://www.buser.com.br/onibus/niteroi-rj/cabo-frio-rj?ida=2026-11-24"
@@ -175,7 +157,7 @@
      "data": "2026-11-27",
      "hora": "19:20",
      "preco": 46.9,
-     "vagas": 10,
+     "vagas": 9,
      "empresa": "Buser",
      "link": "https://www.buser.com.br/onibus/niteroi-rj/cabo-frio-rj?ida=2026-11-27"
     },
@@ -228,8 +210,8 @@
      "fonte": "buser",
      "data": "2026-11-29",
      "hora": "19:20",
-     "preco": 39.9,
-     "vagas": 3,
+     "preco": 43.9,
+     "vagas": null,
      "empresa": "Buser",
      "link": "https://www.buser.com.br/onibus/niteroi-rj/cabo-frio-rj?ida=2026-11-29"
     },
@@ -237,8 +219,8 @@
      "fonte": "buser",
      "data": "2026-11-29",
      "hora": "20:00",
-     "preco": 39.9,
-     "vagas": 4,
+     "preco": 43.9,
+     "vagas": null,
      "empresa": "Buser",
      "link": "https://www.buser.com.br/onibus/niteroi-rj/cabo-frio-rj?ida=2026-11-29"
     },
@@ -246,7 +228,7 @@
      "fonte": "buser",
      "data": "2026-11-30",
      "hora": "07:20",
-     "preco": 45.9,
+     "preco": 44.9,
      "vagas": null,
      "empresa": "Buser",
      "link": "https://www.buser.com.br/onibus/niteroi-rj/cabo-frio-rj?ida=2026-11-30"
@@ -255,7 +237,7 @@
      "fonte": "buser",
      "data": "2026-11-30",
      "hora": "10:20",
-     "preco": 45.9,
+     "preco": 44.9,
      "vagas": null,
      "empresa": "Buser",
      "link": "https://www.buser.com.br/onibus/niteroi-rj/cabo-frio-rj?ida=2026-11-30"
@@ -426,8 +408,8 @@
      "fonte": "buser",
      "data": "2026-12-07",
      "hora": "19:20",
-     "preco": 36.9,
-     "vagas": 4,
+     "preco": 50.9,
+     "vagas": null,
      "empresa": "Buser",
      "link": "https://www.buser.com.br/onibus/niteroi-rj/cabo-frio-rj?ida=2026-12-07"
     },
@@ -480,8 +462,8 @@
      "fonte": "buser",
      "data": "2026-12-11",
      "hora": "07:20",
-     "preco": 50.9,
-     "vagas": 4,
+     "preco": 61.9,
+     "vagas": null,
      "empresa": "Buser",
      "link": "https://www.buser.com.br/onibus/niteroi-rj/cabo-frio-rj?ida=2026-12-11"
     },
@@ -489,8 +471,8 @@
      "fonte": "buser",
      "data": "2026-12-11",
      "hora": "10:20",
-     "preco": 50.9,
-     "vagas": 4,
+     "preco": 61.9,
+     "vagas": null,
      "empresa": "Buser",
      "link": "https://www.buser.com.br/onibus/niteroi-rj/cabo-frio-rj?ida=2026-12-11"
     },
@@ -670,7 +652,7 @@
      "data": "2026-12-18",
      "hora": "19:20",
      "preco": 39.9,
-     "vagas": 4,
+     "vagas": 1,
      "empresa": "Buser",
      "link": "https://www.buser.com.br/onibus/niteroi-rj/cabo-frio-rj?ida=2026-12-18"
     },
@@ -745,6 +727,42 @@
      "vagas": 2,
      "empresa": "Buser",
      "link": "https://www.buser.com.br/onibus/niteroi-rj/cabo-frio-rj?ida=2026-12-20"
+    },
+    {
+     "fonte": "buser",
+     "data": "2026-12-21",
+     "hora": "07:20",
+     "preco": 50.9,
+     "vagas": 4,
+     "empresa": "Buser",
+     "link": "https://www.buser.com.br/onibus/niteroi-rj/cabo-frio-rj?ida=2026-12-21"
+    },
+    {
+     "fonte": "buser",
+     "data": "2026-12-21",
+     "hora": "10:20",
+     "preco": 50.9,
+     "vagas": 4,
+     "empresa": "Buser",
+     "link": "https://www.buser.com.br/onibus/niteroi-rj/cabo-frio-rj?ida=2026-12-21"
+    },
+    {
+     "fonte": "buser",
+     "data": "2026-12-21",
+     "hora": "19:20",
+     "preco": 54.9,
+     "vagas": 2,
+     "empresa": "Buser",
+     "link": "https://www.buser.com.br/onibus/niteroi-rj/cabo-frio-rj?ida=2026-12-21"
+    },
+    {
+     "fonte": "buser",
+     "data": "2026-12-21",
+     "hora": "20:00",
+     "preco": 66.9,
+     "vagas": null,
+     "empresa": "Buser",
+     "link": "https://www.buser.com.br/onibus/niteroi-rj/cabo-frio-rj?ida=2026-12-21"
     }
    ]
   }
