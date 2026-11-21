@@ -37,7 +37,7 @@ jobs:
 
       - name: Rodar testes
         run: |
-          pytest -q
+          pytest -m pytest -q
           node --test tests/js/radar-core.test.js
 
       - name: Rodar o radar e atualizar o site
